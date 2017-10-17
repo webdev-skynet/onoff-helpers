@@ -6,32 +6,15 @@ import UTILS from './modules/utility-helpers';
 import COOKIES from './modules/cookie';
 
 if(UA.ie) legacyTagFix();
-global.UA = UA;
 
-// UTILS TEST
-const onResizeFlag = UTILS.startResizeListner(testResize);
-const onScrollFlag = UTILS.startScrollListner(testScroll);
+var arr = [
+    { ua: UA },
+    { util: UTILS },
+    { cookie: COOKIES }
+];
 
-function testResize(w, h) {
-    console.log('%i X %i', w, h);
-}
-
-function testScroll(t) {
-    console.log('%d', t);
-}
-// setTimeout(function() {
-//     utils.cancelResizeListner(onResizeFlag);
-//     utils.cancelScrollListner(onScrollFlag);
-// }, 6000);
-
-
-// COOKIES TEST
-COOKIES.write('dodo', off, '30seconds');
-
-var off = COOKIES.read('dodo', true);
-
-console.log(off);
-
-
-// UA TEST
-console.log(UA);
+global.Shared = arr.reduce(function (result, item) {
+    var key = Object.keys(item)[0]; //first property: ua
+    result[key] = item[key];
+    return result;
+}, {});
