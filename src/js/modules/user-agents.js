@@ -19,7 +19,6 @@ if (global.navigator) {
         _3ds, _dsi, _wii, _wiiu, _ps3, _ps4, _psp, _psv, _xbox, _switch,
         _bot
 
-    // ????
     if (_userAgent.indexOf("msie") != -1) {
         _IE = true;
         _userAgent.match(/msie (\d+\.\d)/);
@@ -131,7 +130,6 @@ if (global.navigator) {
     if (_userAgent.indexOf('googlebot') != -1 || _userAgent.indexOf('yahoo') != -1 || _userAgent.indexOf('msnbot') != -1) {
         _bot = true;
     }
-
 }
 
 const ua = {
@@ -140,7 +138,6 @@ const ua = {
     ie10: (_IEver == 10.0),
     ie11: (_IEver == 11.0),
 
-    // ???
     iphone: !!_iPhone,
     ipad: !!_iPad,
     ipod: !!_iPod,
@@ -155,10 +152,10 @@ const ua = {
     bot: !!_bot,
 
     legacyUA: (
-        !!_xbox || !!_ps4 || !!_ps3 || !!_psp || !!_psv || !!_3ds || !!_dsi || !!_wii || //????
-        !!_Opera || //?????????
-        !!_BlackBerry || !!_nexus7 || !!_WindowsPhone || //???????
-        _IE && _IEver < 10 || //??IE
+        !!_xbox || !!_ps4 || !!_ps3 || !!_psp || !!_psv || !!_3ds || !!_dsi || !!_wii ||
+        !!_Opera ||
+        !!_BlackBerry || !!_nexus7 || !!_WindowsPhone ||
+        _IE && _IEver < 11 || //IE
         _iOSver < '9' || // Safari????
         _AndroidVer < '6' // android???????_AndroidVer < '6?
     ),

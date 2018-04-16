@@ -11,8 +11,7 @@ export function legacyTagFix() {
         for (var i = 0; i < tags.length; i++) {
             document.createElement(tags[i]);
         }
-        
-        return tags;
 
+        return tags;
     }
 }

@@ -1,8 +1,7 @@
 'use strict';
 
-const _objTypes = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Object', 'Array'];
+const _objTypes = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Object', 'Array', 'Symbol'];
 
-// private class (TODO: transfert to es6 module)
 export class objectScan {
     /** This Returns Object Type */
     getType(val) {
@@ -38,7 +37,7 @@ export class objectScan {
 
 export default _objTypes.forEach(
     name => {
-     objectScan[`is${name}`] = obj => toString.call(obj) == `[object ${name}]`;
+        objectScan[`is${name}`] = obj => toString.call(obj) === `[object ${name}]`;
     }
 )
 

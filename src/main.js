@@ -14,7 +14,7 @@ var arr = [
 ];
 
 global.Shared = arr.reduce(function (result, item) {
-    var key = Object.keys(item)[0]; //first property: ua
+    var key = Object.keys(item);
     result[key] = item[key];
     return result;
 }, {});

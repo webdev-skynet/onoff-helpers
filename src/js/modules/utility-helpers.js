@@ -5,7 +5,6 @@
 	 * ユーティリティ
 *****************************************************************************************************************/
 
-
 import { objectScan } from './utility-objectTypes';
 import _ua from './user-agents';
 import debounce from 'lodash.debounce';
@@ -16,7 +15,7 @@ const _hasTouch = ('TouchEvent' in global && _ua.smartdevice)
 
 // PRIVATE METHODS
 function _guIDGenerator() {
-    //https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
+    // https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
     var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     var uniqID = randLetter + Date.now();
     return uniqID;
@@ -49,7 +48,7 @@ class utils {
 
     startResizeListner(listner, thisObject) {
 
-        const id = _guIDGenerator(10);
+        const id = _guIDGenerator();
 
         if (objectScan.isFunction(listner)) {
             let _that = thisObject !== undefined ? thisObject : global;
@@ -92,7 +91,7 @@ class utils {
     }
 
     startScrollListner(listener, thisObject) {
-        const id = _guIDGenerator(10);
+        const id = _guIDGenerator();
 
         if (objectScan.isFunction(listener)) {
             const _this = thisObject !== undefined ? thisObject : global;
@@ -113,8 +112,6 @@ class utils {
                 };
 
                 if (window.addEventListener) {
-                    // TODO: https://stackoverflow.com/questions/8796988/binding-multiple-events-to-a-listener-without-jquery
-                    // but is it really necessary???
                     global.addEventListener('resize', throttle(handler, 100), false);
                     global.addEventListener('scroll', throttle(handler, 100), false);
                 }
@@ -145,5 +142,5 @@ class utils {
 
 }
 
-//make it global from here directly ( equivalent to => global.utils = new utils())
+// NOTE: make it global from here directly ( equivalent to => global.utils = new utils())
 export default new utils();
