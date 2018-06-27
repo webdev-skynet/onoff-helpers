@@ -30,13 +30,15 @@ const watchedBrowserify = watchify(browserify({
     entries: [`src/js/main.js`],
     cache: {},
     packageCache: {}
-})
-);
+}));
 
 function bundle() {
     return watchedBrowserify
         .transform('babelify', { presets: ["es2015"] })
         .bundle()
+        .on('error', error => {
+            console.log(error);
+        })
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init())
