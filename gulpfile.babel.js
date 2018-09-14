@@ -34,7 +34,8 @@ const watchedBrowserify = watchify(browserify({
 
 function bundle() {
     return watchedBrowserify
-        .transform('babelify', { presets: ["es2015"] })
+        // .transform('babelify', { presets: ["es2015"] })
+        .transform('babelify', { presets: ["es2015-ie"] })
         .bundle()
         .on('error', error => {
             console.log(error);
